@@ -1,10 +1,11 @@
+
 regions = {'North America','South America','Central America','West Europe',...
     'East Europe', 'North Africa','West Africa','East Africa','Sub Saharan Africa'...
-    ,'South East Asia','Middle East'}
+    ,'South East Asia','Asia','Oceanic','Middle East'}
 [selection,v]=listdlg('PromptString','Region','SelectionMode','single','ListString',regions);
 figure(1)
 hold on
-axesm globe;
+p = axesm('globe');
 gridm('GLineWidth',0.75,'Grid','on')
 load coastlines
 plotm(coastlat,coastlon)
@@ -19,36 +20,223 @@ axis off;
 camlight right
 lighting Gouraud;
 material ([.7, .9, .8])
-if strcmp(regions{selection},'West Europe')
-    country1 = {'Portugal','Spain','France','Germany','Netherlands'}
+rotate(p,[35 0],38)
+
+if strcmp(regions{selection},'North America')
+%     *****loc = csvread('dataFinal.csv',1,8,'I2..J2')
+    view(-9,39)
+    plot3m(loc(1),loc(2),0.1,'m*')
+    
+%     *****country1 = {  }
     countryChoice = menu('Country', country1);
-    food1 = {'Wheat','Oats','Meat','Milk'}
+%     ****food1 = {'Wheat','Oats','Meat','Milk'}
     foodChoice = menu('Food',food1)
+    
+    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
+    year1 = str2num(yearRange{1}); 
+    year2 = str2num(yearRange{2});
+%     *****DataFit2(1961:2013,AFG(foodChoice,:),1,year1:year2)
+    
 end
+if strcmp(regions{selection},'South America')
+    *****loc = csvread('dataFinal.csv',1,8,'I2..J2')
+    view(28,-23)
+    plot3m(loc(1),loc(2),0.1,'m*')
+    
+    *****country1 = {  }
+    countryChoice = menu('Country', country1);
+    ****food1 = {'Wheat','Oats','Meat','Milk'}
+    foodChoice = menu('Food',food1)
+    
+    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
+    year1 = str2num(yearRange{1}); 
+    year2 = str2num(yearRange{2});
+    *****DataFit2(1961:2013,AFG(foodChoice,:),1,year1:year2)
+    
+end
+
+if strcmp(regions{selection},'Central America')
+    *****loc = csvread('dataFinal.csv',1,8,'I2..J2')
+    *****view(-9,39)
+    plot3m(loc(1),loc(2),0.1,'m*')
+    
+    *****country1 = {  }
+    countryChoice = menu('Country', country1);
+    ****food1 = {'Wheat','Oats','Meat','Milk'}
+    foodChoice = menu('Food',food1)
+    
+    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
+    year1 = str2num(yearRange{1}); 
+    year2 = str2num(yearRange{2});
+    *****DataFit2(1961:2013,AFG(foodChoice,:),1,year1:year2)
+    
+end
+
+if strcmp(regions{selection},'West Europe')
+    *****loc = csvread('dataFinal.csv',1,8,'I2..J2')
+    view(101,56)
+    plot3m(loc(1),loc(2),0.1,'m*')
+    
+    *****country1 = {  }
+    countryChoice = menu('Country', country1);
+    ****food1 = {'Wheat','Oats','Meat','Milk'}
+    foodChoice = menu('Food',food1)
+    
+    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
+    year1 = str2num(yearRange{1}); 
+    year2 = str2num(yearRange{2});
+    *****DataFit2(1961:2013,AFG(foodChoice,:),1,year1:year2)
+end
+
+if strcmp(regions{selection},'East Europe')
+    *****loc = csvread('dataFinal.csv',1,8,'I2..J2')
+    view(101,56)
+    plot3m(loc(1),loc(2),0.1,'m*')
+    
+    *****country1 = {  }
+    countryChoice = menu('Country', country1);
+    ****food1 = {'Wheat','Oats','Meat','Milk'}
+    foodChoice = menu('Food',food1)
+    
+    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
+    year1 = str2num(yearRange{1}); 
+    year2 = str2num(yearRange{2});
+    *****DataFit2(1961:2013,AFG(foodChoice,:),1,year1:year2)
+    
+end
+
+if strcmp(regions{selection},'North Africa')
+    *****loc = csvread('dataFinal.csv',1,8,'I2..J2')
+    view(103,3)
+    plot3m(loc(1),loc(2),0.1,'m*')
+    
+    *****country1 = {  }
+    countryChoice = menu('Country', country1);
+    ****food1 = {'Wheat','Oats','Meat','Milk'}
+    foodChoice = menu('Food',food1)
+    
+    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
+    year1 = str2num(yearRange{1}); 
+    year2 = str2num(yearRange{2});
+    *****DataFit2(1961:2013,AFG(foodChoice,:),1,year1:year2)
+end
+
+
+if strcmp(regions{selection},'West Africa')
+    *****loc = csvread('dataFinal.csv',1,8,'I2..J2')
+    view(103,3)
+    plot3m(loc(1),loc(2),0.1,'m*')
+    
+    *****country1 = {  }
+    countryChoice = menu('Country', country1);
+    ****food1 = {'Wheat','Oats','Meat','Milk'}
+    foodChoice = menu('Food',food1)
+    
+    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
+    year1 = str2num(yearRange{1}); 
+    year2 = str2num(yearRange{2});
+    *****DataFit2(1961:2013,AFG(foodChoice,:),1,year1:year2)
+end
+
+
+if strcmp(regions{selection},'East Africa')
+    *****loc = csvread('dataFinal.csv',1,8,'I2..J2')
+    view(103,3)
+    plot3m(loc(1),loc(2),0.1,'m*')
+    
+    *****country1 = {  }
+    countryChoice = menu('Country', country1);
+    ****food1 = {'Wheat','Oats','Meat','Milk'}
+    foodChoice = menu('Food',food1)
+    
+    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
+    year1 = str2num(yearRange{1}); 
+    year2 = str2num(yearRange{2});
+    *****DataFit2(1961:2013,AFG(foodChoice,:),1,year1:year2)
+end
+
+
+if strcmp(regions{selection},'Sub Saharan Africa')
+    *****loc = csvread('dataFinal.csv',1,8,'I2..J2')
+    view(103,3)
+    plot3m(loc(1),loc(2),0.1,'m*')
+    
+    *****country1 = {  }
+    countryChoice = menu('Country', country1);
+    ****food1 = {'Wheat','Oats','Meat','Milk'}
+    foodChoice = menu('Food',food1)
+    
+    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
+    year1 = str2num(yearRange{1}); 
+    year2 = str2num(yearRange{2});
+    *****DataFit2(1961:2013,AFG(foodChoice,:),1,year1:year2)
+end
+
+
+if strcmp(regions{selection},'South East Asia')
+    *****loc = csvread('dataFinal.csv',1,8,'I2..J2')
+    view(-170,-3)
+    plot3m(loc(1),loc(2),0.1,'m*')
+    
+    *****country1 = {  }
+    countryChoice = menu('Country', country1);
+    ****food1 = {'Wheat','Oats','Meat','Milk'}
+    foodChoice = menu('Food',food1)
+    
+    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
+    year1 = str2num(yearRange{1}); 
+    year2 = str2num(yearRange{2});
+    *****DataFit2(1961:2013,AFG(foodChoice,:),1,year1:year2)
+end
+
+if strcmp(regions{selection},'Asia')
+    *****loc = csvread('dataFinal.csv',1,8,'I2..J2')
+    view(-179,23)
+    plot3m(loc(1),loc(2),0.1,'m*')
+    
+    *****country1 = {  }
+    countryChoice = menu('Country', country1);
+    ****food1 = {'Wheat','Oats','Meat','Milk'}
+    foodChoice = menu('Food',food1)
+    
+    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
+    year1 = str2num(yearRange{1}); 
+    year2 = str2num(yearRange{2});
+    *****DataFit2(1961:2013,AFG(foodChoice,:),1,year1:year2)
+end
+
+
+if strcmp(regions{selection},'Oceanic')
+%     *****loc = csvread('dataFinal.csv',1,8,'I2..J2')
+    view(-153,-26)
+    plot3m(loc(1),loc(2),0.1,'m*')
+    
+%     *****country1 = {  }
+    countryChoice = menu('Country', country1);
+%     ****food1 = {'Wheat','Oats','Meat','Milk'}
+    foodChoice = menu('Food',food1)
+    
+    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
+    year1 = str2num(yearRange{1}); 
+    year2 = str2num(yearRange{2});
+%     *****DataFit2(1961:2013,AFG(foodChoice,:),1,year1:year2)
+end
+
 if strcmp(regions{selection},'Middle East')
-    country1 = {'Syria','Afghanistan','Lebanon'}
-    locAFG = csvread('dataFinal.csv',1,8,'I2..J2')
-    plot3m(locAFG(1),locAFG(2),0.1,'m*')
+    loc = csvread('dataFinal.csv',1,8,'I2..J2')
     view(139,26)
+    plot3m(loc(1),loc(2),0.1,'m*')
+    
     country1 = {'Syria','Afghanistan','Lebanon'}
     countryChoice = menu('Country', country1);
     food1 = {'Wheat','Oats','Meat','Milk'}
     foodChoice = listdlg('PromptString','Food','SelectionMode','single','ListString',food1)
-    yearRange = inputdlg('Input Year Range','Year',1)
-    yearRange = str2num(yearRange{1})
-    figure(2)
-    DataFit(1961:2013,AFG(12,:),1,yearRange)
-    %     subplot(2,1,2)
-    %     worldmap(country1{countryChoice});
-    %     load coastlines
-    %     plotm(coastlat,coastlon)
     
+    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
+    year1 = str2num(yearRange{1}); 
+    year2 = str2num(yearRange{2});
+    DataFit2(1961:2013,AFG(foodChoice,:),1,year1:year2)
 end
 
-% figure
-% worldmap(country{selection})
-% load coastlines
-% load topo
-% plotm(coastlat,coastlon)
-% titleC = country{selection};
-% title(titleC)
+
+
