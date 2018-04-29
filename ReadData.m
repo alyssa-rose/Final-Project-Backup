@@ -1,5 +1,5 @@
 % script to read in food data
-T = readtable('dataFinal-v.3.xlsx','Range','B1:W397');
+T = readtable('dataFinal-v.3.xlsx','Range','B1:AB397');
 %% forming structures
 areaCodes = unique(T{:,1}); % is an array
 foodGroups = T{:,2}(1:end); % is a cell
