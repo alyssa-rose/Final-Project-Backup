@@ -1,0 +1,54 @@
+regions = {'North America','South America','Central America','West Europe',...
+    'East Europe', 'North Africa','West Africa','East Africa','Sub Saharan Africa'...
+    ,'South East Asia','Middle East'}
+[selection,v]=listdlg('PromptString','Region','SelectionMode','single','ListString',regions);
+figure(1)
+hold on
+axesm globe;
+gridm('GLineWidth',0.75,'Grid','on')
+load coastlines
+plotm(coastlat,coastlon)
+setm(gca,'Galtitude',0.025);
+axis vis3d
+load topo
+topo = topo / (earthRadius('km')* 20);
+hs = meshm(topo,topolegend,size(topo),topo);
+demcmap(topo)
+set(gcf,'color','black');
+axis off;
+camlight right
+lighting Gouraud;
+material ([.7, .9, .8])
+if strcmp(regions{selection},'West Europe')
+    country1 = {'Portugal','Spain','France','Germany','Netherlands'}
+    countryChoice = menu('Country', country1);
+    food1 = {'Wheat','Oats','Meat','Milk'}
+    foodChoice = menu('Food',food1)
+end
+if strcmp(regions{selection},'Middle East')
+    country1 = {'Syria','Afghanistan','Lebanon'}
+    locAFG = csvread('dataFinal.csv',1,8,'I2..J2')
+    plot3m(locAFG(1),locAFG(2),0.1,'m*')
+    view(139,26)
+    country1 = {'Syria','Afghanistan','Lebanon'}
+    countryChoice = menu('Country', country1);
+    food1 = {'Wheat','Oats','Meat','Milk'}
+    foodChoice = listdlg('PromptString','Food','SelectionMode','single','ListString',food1)
+    yearRange = inputdlg('Input Year Range','Year',1)
+    yearRange = str2num(yearRange{1})
+    figure(2)
+    DataFit(1961:2013,AFG(12,:),1,yearRange)
+    %     subplot(2,1,2)
+    %     worldmap(country1{countryChoice});
+    %     load coastlines
+    %     plotm(coastlat,coastlon)
+    
+end
+
+% figure
+% worldmap(country{selection})
+% load coastlines
+% load topo
+% plotm(coastlat,coastlon)
+% titleC = country{selection};
+% title(titleC)
