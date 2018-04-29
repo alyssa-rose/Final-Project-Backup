@@ -5,18 +5,16 @@ Par.nClus = 7;
 Par.maxIter = 100;
 %% Carbohydrate, Protein, Lipid Clustering
 areaCPL = cell2mat(struct2cell(CreateGroups(area,'cpl'))); % creates groups for carbs, proteins, lipids
-ClusInfoCPL = KmeansCore(areaCPL,Par);
-figure(1)
-%gscatter(areaCPL(1,:,:),areaCPL(2,:,:),areaCPL(3,:,:),ClusInfoCPL)
-Colors = parula(7) ; 
-for i = 1:7 
-    logMat = find(ClusInfoCPL.clusIds == i) ; 
-    scatter3(areaCPL(logMat,1), areaCPL(logMat, 2), areaCPL(logMat,3), 2, Colors(i,:),'.') 
-    hold on 
-end
-xlabel('Carbohydrates')
-ylabel('Protein')
-zlabel('Lipids')
+[ClusInfoCPL,~] = KmeansWrapper(areaCPL,Par,20);
+
+labelCPL = struct('title','Carb-Protein-Lipid Diet Analysis','x','Carbohydrates'...
+    ,'y','Proteins','z','Lipids');
+Plot3DClusters(areaCPL,ClusInfoCPL,2,labelCPL)
+
 %% Beverage Clustering
 areaBev = cell2mat(struct2cell(CreateGroups(area,'bev'))); % creates groups for beverages
-ClusInfoBev = KmeansCore(areaBev,Par);
+[ClusInfoBev,~] = KmeansWrapper(areaBev,Par,20);
+
+labelBev = struct('title','Beverage Diet Analysis','x','Alcohol'...
+    ,'y','Coffee','z','Tea');
+Plot3DClusters(areaBev,ClusInfoBev,3,labelBev)
