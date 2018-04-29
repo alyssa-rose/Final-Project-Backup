@@ -1,8 +1,16 @@
 function [polyOrder,yFit,rSq] = CorrectPoly(x,y)
-rSq = zeros(1,7);
+%{
+function [polyOrder,yFit,rSq] = CorrectPoly(x,y)
+uses basic idea of DataFit to determine the correct poly order
+to use for a data fit
+
+Alyssa Rose  Final Project 04-29-18
+%}
+
+rSq = zeros(1,5);
 yAvg = mean(y);
 ssTot = sum((y - yAvg).^2);
-for k = 1:7
+for k = 1:5
     z = k + 1;
     A = zeros(length(x),z);
     A(:,(1:z)) = x.^(k:-1:0);
