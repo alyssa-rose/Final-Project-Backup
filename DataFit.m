@@ -1,8 +1,11 @@
-function [yPredic, xPredic, yFit,coeff,condNum,rSq]=DataFit(x1,y1,isPlotted)
+function [yPredic, xPredic, yFit,coeff,condNum,rSq]=DataFit(x1,y1,isPlotted,xPredic)
 %{
-Creates a fit for polynomial functions using given x,y and desired
-poly order values and outputs a fitted graph, coeff matrix, condition
-number and the R^2 value for the fit
+function [yPredic, xPredic, yFit,coeff,condNum,rSq]=DataFit(x1,y1,isPlotted)
+
+creates a fit for the data using a correct order polynomial 
+calling CorrectPoly and extrapolates the data by calling EctrapData
+
+Alyssa Rose  Final Project  04-29-18
 %}
 
 %% checks if vectors meet requirements
@@ -14,14 +17,15 @@ if length(x1)~=length(y1)
     return
 end
 
-x = x1 - mean(x1);
-y = y1 - mean(y1);
+% shifts the data for a better R squared number
+f = find(y1,1,'first')
+x = x1(f:end) - mean(x1(f:end));
+y = y1(f:end) - mean(y1(f:end));
 
-%% sets up A and solves for coeff
+%% sets up A and solves using correct poly order
 %forces x,y to be columns
 y = y(:)
 x = x(:)
-
 [polyOrder,yFit,rSq] = CorrectPoly(x,y)
 %%
 z = polyOrder + 1;
@@ -30,20 +34,25 @@ A(:,(1:z)) = x.^(polyOrder:-1:0);
 condNum = cond(A);
 coeff = A\y;
 
-%finds yFit
-yFit = A*coeff;
-xPredic = str2num(input('input year range: ','s'))
-xPredic = xPredic - mean(x1)
+xPredic = xPredic - mean(x1(f:end))
 [yPredic] = ExtrapData(coeff,xPredic,polyOrder)
-
-xNew = [x;xPredic(:)]
-yNew = [y;yPredic]
-
+% m=1
+% while m < length(yPredic)+1
+%     if yPredic(m)<0
+%         yPredic(m) = 0
+%     else
+%         yPredic(m) = yPredic(m)
+%     end
+%     m=m+1;
+% end
 %%
+xPredic = xPredic-mean(x);
+yPredic = yPredic-mean(y);
 if isPlotted ==1
     figure(1)
     hold on
-    plot(xNew,yNew,'mo')
+    %,xPredic(:),yPredic,'mo'
+    plot(x,y,'b-',xPredic(:),yPredic,'mo')
     title(sprintf('Poly order %i , R^2 = %1.4f', polyOrder,rSq))
     xlabel('Independent Variable')
     ylabel('Dependent Variable')
