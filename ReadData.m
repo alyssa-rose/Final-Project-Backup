@@ -4,8 +4,8 @@ T = readtable('FoodDataset.xlsx','Range','B1:AB1431');
 areaCodes = unique(T{:,1}); % is an array
 foodGroups = T{:,2}(1:end); % is a cell
 areaNames = unique(T{:,3}); % is a cell
-lat = unique(T{:,4}); % is an array
-long = unique(T{:,5}); % is an array
+lat = unique(T{:,4},'stable'); % is an array
+long = unique(T{:,5},'stable'); % is an array
 foodData = T{:,6:end}; % is an array
 
 for j = (1:length(areaNames(:)))
