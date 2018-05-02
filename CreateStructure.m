@@ -12,6 +12,7 @@ function area = CreateStructure(areaName,lat,long,foodData)
 %         area.(foodGroups) - field containing data from 1961 to 2013
 %         specific for each good group (carbohydrates, fruits, legumes,
 %         dairy, etc.)
+%
 % code author: sid hillwig
 [r,c] = size(foodData);
 if nargin == 4 % change to 5

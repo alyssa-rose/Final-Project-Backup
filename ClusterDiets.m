@@ -1,4 +1,6 @@
-% script ClusterDiets [does]
+% script ClusterDiets creates matrices for diet groups Carb-Protein-Lipid
+% (CPL) and beverages (Bev), performs clustering functions on them, and
+% plots the clusters in 3D
 %
 % code author: sid hillwig
 Par.nClus = 7;
