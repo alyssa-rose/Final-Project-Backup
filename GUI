@@ -1,7 +1,13 @@
 
+%{
+specifyGUI3 takes in user data to fit a line to the data and to predic food
+consumption for a specific year given a country
+
+Alyssa Rose  Final Project 04-29-18
+%}
 regions = {'North/Central America','South America','West Europe',...
     'East Europe', 'North Africa','West Africa','East Africa','Sub Saharan Africa'...
-    ,'South East Asia','Asia','Oceanic','Middle East'}
+    ,'South East Asia/Asia','Oceanic','Middle East'}
 [selection,v]=listdlg('PromptString','Region','SelectionMode','single','ListString',regions);
 figure(1)
 hold on
@@ -24,9 +30,11 @@ rotate(p,[35 0],38)
 
 if strcmp(regions{selection},'North/Central America')
     view(-9,39)
-    plot3m(loc(1),loc(2),0.1,'m*')
+%     plot3m(loc(1),loc(2),0.1,'m*')
     
-%     *****country1 = {  }
+    country1 = {'Bahamas','Barbados','Canada','Costa Rica','Cuba'...
+        'Dominican Republic','El Salvador','Guatemala','Haiti',...
+        'Haiti','Honduras','Jamaica','Panama','Trinidad and Tobago'}
     countryChoice = menu('Country', country1);
     foodChoice = menu('Food',foodGroups)
     
@@ -39,9 +47,10 @@ end
 if strcmp(regions{selection},'South America')
    
     view(28,-23)
-    plot3m(loc(1),loc(2),0.1,'m*')
+%     plot3m(loc(1),loc(2),0.1,'m*')
     
-    *****country1 = {  }
+    country1 = {'Argentina', 'Bolivia', 'Chile','Colombia'...
+        'Ecuador','Guyana','Peru','Uruguay','Venezuela'}
     countryChoice = menu('Country', country1);
     foodChoice = menu('Food',foodGroups)
     
@@ -55,9 +64,11 @@ end
 if strcmp(regions{selection},'West Europe')
     
     view(101,56)
-    plot3m(loc(1),loc(2),0.1,'m*')
+%     plot3m(loc(1),loc(2),0.1,'m*')
     
-    *****country1 = {  }
+    country1 = {'Austria','Belgium','Denmark','Finland','Iceland','Ireland'...
+        'Luxembourg','Netherlands','Norway','Portugal','Spain','Sweden',...
+        'Switzerland','United Kingdom'}
     countryChoice = menu('Country', country1);
    foodChoice = menu('Food',foodGroups)
     
@@ -70,9 +81,12 @@ end
 if strcmp(regions{selection},'East Europe')
     
     view(101,56)
-    plot3m(loc(1),loc(2),0.1,'m*')
-    
-    *****country1 = {  }
+%     plot3m(loc(1),loc(2),0.1,'m*')
+%     
+    country1 = {'Albania','Belarus','Bosnia and Herzegovina','Bulgaria',...
+        'Croatia','Cyprus','Czechia','Estonia','Greece','Hungary',...
+        'Lithuania','Malta','Montenegro','Poland','Republic of Moldova',...
+        'Romania','Serbia','Slovakia','Slovenia','Ukraine'}
     countryChoice = menu('Country', country1);
     foodChoice = menu('Food',foodGroups)
     
@@ -86,9 +100,12 @@ end
 if strcmp(regions{selection},'North Africa')
  
     view(103,3)
-    plot3m(loc(1),loc(2),0.1,'m*')
+%     plot3m(loc(1),loc(2),0.1,'m*')
     
-    *****country1 = {  }
+    country1 = {'Algeria','Benin','Burkina Faso','Cote d''lvoire',...
+        'Chad','Djibouti','Ethiopia','Gambia','Ghana','Guinea','Guinea-Bissau',...
+        'Liberia','Mali','Morocco','Nigeria','Niger','Senegal','Sierra Leone',...
+        'Sudan','Togo','Tunisia'}
     countryChoice = menu('Country', country1);
     foodChoice = menu('Food',foodGroups)
     
@@ -97,46 +114,15 @@ if strcmp(regions{selection},'North Africa')
     year2 = str2num(yearRange{2});
     %     *****DataFit2(1992:2013,AFG(foodChoice,:),1,year1:year2)
 end
-
-
-if strcmp(regions{selection},'West Africa')
-    
-    view(103,3)
-    plot3m(loc(1),loc(2),0.1,'m*')
-    
-    *****country1 = {  }
-    countryChoice = menu('Country', country1);
-    foodChoice = menu('Food',foodGroups)
-    
-    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
-    year1 = str2num(yearRange{1}); 
-    year2 = str2num(yearRange{2});
-%     *****DataFit2(1992:2013,AFG(foodChoice,:),1,year1:year2)
-end
-
-
-if strcmp(regions{selection},'East Africa')
-    
-    view(103,3)
-    plot3m(loc(1),loc(2),0.1,'m*')
-    
-    *****country1 = {  }
-    countryChoice = menu('Country', country1);
-    foodChoice = menu('Food',foodGroups)
-    
-    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
-    year1 = str2num(yearRange{1}); 
-    year2 = str2num(yearRange{2});
-    %     *****DataFit2(1992:2013,AFG(foodChoice,:),1,year1:year2)
-end
-
 
 if strcmp(regions{selection},'Sub Saharan Africa')
     
     view(103,3)
-    plot3m(loc(1),loc(2),0.1,'m*')
+%     plot3m(loc(1),loc(2),0.1,'m*')
     
-    *****country1 = {  }
+    country1 = {'Angola', 'Botswana','Cameroon','Central African Republic',...
+      'Kenya','Madagascar','Malawi','Mozambique','South Africa','Uganda',...
+      'United Republic of Tanzania','Zambia','Zimbabwe'}
     countryChoice = menu('Country', country1);
     foodChoice = menu('Food',foodGroups)
     
@@ -147,12 +133,16 @@ if strcmp(regions{selection},'Sub Saharan Africa')
 end
 
 
-if strcmp(regions{selection},'South East Asia')
+if strcmp(regions{selection},'South East Asia/Asia')
    
     view(-170,-3)
-    plot3m(loc(1),loc(2),0.1,'m*')
+%     plot3m(loc(1),loc(2),0.1,'m*')
     
-    *****country1 = {  }
+    country1 = {'Brunei Darussalam','Cambodia','China,Hong Kong', 'China,Macao',...
+        'China,Taiwan','Democratic People''s Republic of Korea','Kazakhstan','Kyrgyzstan',...
+        'Lao People''s Democratic Republic','Malaysia','Mongolia',...
+        'Myanmar','Nepal','Philippines','Pakistan','Republic of Korea',...
+        'Sri Lanka','Thailand','Uzbekistan','Vietnam'}
     countryChoice = menu('Country', country1);
     foodChoice = menu('Food',foodGroups)
     
@@ -162,28 +152,12 @@ if strcmp(regions{selection},'South East Asia')
 %     *****DataFit2(1992:2013,AFG(foodChoice,:),1,year1:year2)
 end
 
-if strcmp(regions{selection},'Asia')
-   
-    view(-179,23)
-    plot3m(loc(1),loc(2),0.1,'m*')
-    
-    *****country1 = {  }
-    countryChoice = menu('Country', country1);
-    foodChoice = menu('Food',foodGroups)
-    
-    yearRange = inputdlg({'Input Year Range from: ','To: '},'Years',[1 35])
-    year1 = str2num(yearRange{1}); 
-    year2 = str2num(yearRange{2});
-    %     *****DataFit2(1992:2013,AFG(foodChoice,:),1,year1:year2)
-end
-
-
 if strcmp(regions{selection},'Oceanic')
 
     view(-153,-26)
-    plot3m(loc(1),loc(2),0.1,'m*')
+%     plot3m(loc(1),loc(2),0.1,'m*')
     
-%     *****country1 = {  }
+    country1 = {'Australia','Fiji','New Zealand', }
     countryChoice = menu('Country', country1);
     foodChoice = menu('Food',foodGroups)
     
@@ -196,9 +170,11 @@ end
 if strcmp(regions{selection},'Middle East')
     
     view(139,26)
-    plot3m(loc(1),loc(2),0.1,'m*')
+%     plot3m(loc(1),loc(2),0.1,'m*')
     
-    country1 = {'Syria','Afghanistan','Lebanon'}
+    country1 = {'Afghanistan','Armenia','Azerbaijan','Georgia','Iraq',...
+        'Israel','Jordan','Kuwait','Lebanon','Oman','Saudi Arabia',...
+        'Tajikistan','Turkey','Turkmenistan','United Arab Emirates','Yemen'}
     countryChoice = menu('Country', country1);
     foodChoice = menu('Food',foodGroups)
     
@@ -207,8 +183,3 @@ if strcmp(regions{selection},'Middle East')
     year2 = str2num(yearRange{2});
 %     *****DataFit2(1992:2013,AFG(foodChoice,:),1,year1:year2)
 end
-
-
-
-
-
