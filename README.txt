@@ -43,3 +43,12 @@ CALCULATION FUNCTION
 SUPPORT FUNCTIONS
 1) plot3m - projects point onto map
 2) str2num - converts string to number
+
+TESTS
+1) [yPredic, xPredic, yFit,coeff,condNum,rSq]=DataFit(1992:2013,area(4).legumes,0,2020:2022)
+        yPredic = [442.3330,449.2463,456.3346]      
+        coeff:   1.0e+05 * [0.0000 , -0.0035, 3.4349]
+        polyOrder = 2
+   
+                  
+                  
