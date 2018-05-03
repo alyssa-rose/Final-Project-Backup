@@ -28,3 +28,7 @@ CALCULATION FUNCTION
    matrix math
 3) DataFit.m - fits the data to a polynomial using poly order number from CorrectPoly and from Vandermonde
    matrix math.
+   
+SUPPORT FUNCTIONS
+1) plot3m - projects point onto map
+2) str2num - converts string to number
