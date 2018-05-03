@@ -5,7 +5,6 @@ function ClusInfo = KmeansCore(dMat,Par)
 %       with fields:
 %       Par.nClus:  number of clusters
 %       Par.maxIter:  max iterations to run algorithm
-%       Par.isMedian:  update method: mean or median)
 %
 % Output:
 %   ClusInfo (output structure, with fields: 

@@ -12,7 +12,7 @@ function dietDetails = AnalyzeDiets(area,ClusInfo)
 %         clusIds (matrix with ids of clusters for each point)
 %         centerVecs (vector of center points for each cluster)
 %         sumDist (vector of summed distances of points to their cluster
-%         centers)
+%         centers);
 % output: dietDetails (structure with fields:)
 %         typicalPoint (vector of points "typical" for a cluster)
 %         yearlyClus (nYears x nAreas matrix of cluster ids)
@@ -34,8 +34,21 @@ dietDetails.likelyClusIds = mode(yearlyClus);
 for n = (1:length(ClusInfo.centerVecs))
     likelyClus = dietDetails.likelyClusIds;
     inClusN = likelyClus == n;
-    clusIn = find(ClusInfo.clusIds(inClusN));
+    clusIn = [];
+    for p = (1:length(inClusN))
+        if inClusN(p)
+            clusIn = [clusIn p];
+        end
+    end
     dietDetails(n).clusAreasLat = [area(clusIn).lat];
-    dietDetails(n).clusAreasLong = [area(clusIn).long]; 
+    dietDetails(n).clusAreasLong = [area(clusIn).long];
+    areaNamesInClus = cell(length(clusIn),1);
+    for ii = (1:length(clusIn))
+        areaNamesInClus(ii) = {area(clusIn(ii)).name};
+        if isempty(clusIn)
+            areaNamesInClus(ii) = {'No areas in this cluster'};
+        end
+    end 
+    dietDetails(n).clusNames = table(areaNamesInClus);
 end
 return
