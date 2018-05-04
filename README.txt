@@ -41,6 +41,7 @@ SUPPORT FUNCTIONS
 2) Plot3DClusters.m - code based on Elad Kivelevitch (MathWorks File Exchange,"PlotClusters(Data,IDX,Centers,Colors)") which iteratively plots points with specific colors for each cluster for all years and areas.
 
 TESTS
+** Running specifyGUI will allow you to test all functions; however there is an example test for DataFit if you would like to check that**
 1) [yPredic, xPredic, yFit,coeff,condNum,rSq]=DataFit(1992:2013,area(4).legumes,0,2020:2022)
         yPredic = [442.3330,449.2463,456.3346]      
         coeff:   1.0e+05 * [0.0000 , -0.0035, 3.4349]
